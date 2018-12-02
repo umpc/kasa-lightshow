@@ -8,6 +8,7 @@ const nextLightState = async (config, bulb) => {
       transition_period: config.nextState.transitionPeriod,
       on_off: 1,
       mode: 'normal',
+      color_temp: 0,
       brightness: rand(
         config.brightness[0],
         config.brightness[1]
