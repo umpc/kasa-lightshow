@@ -1,43 +1,30 @@
 const { Client } = require('tplink-smarthome-api');
 
-const rand = (min, max) => Math.floor(min + Math.random()*(max + 1 - min));
-
-const nextLightState = async (config, bulb) => {
-  try {
-    await bulb.lighting.setLightState({
-      transition_period: config.nextState.transitionPeriod,
-      on_off: 1,
-      mode: 'normal',
-      color_temp: 0,
-      brightness: rand(
-        config.brightness[0],
-        config.brightness[1]
-      ),
-      hue: rand(
-        config.hue[0],
-        config.hue[1]
-      ),
-      saturation: rand(
-        config.saturation[0],
-        config.saturation[1]
-      )
-    });
-  } catch (ex) {
-    console.error(ex);
-  }
+const rand = function (min, max) {
+  return Math.floor(min + Math.random()*(max + 1 - min));
 };
 
-(async function main() {
-  try {
-    const config = require('./config.json');
+const nextLightState = function (config, bulb) {
+  return bulb.lighting.setLightState({
+    on_off: 1,
+    color_temp: 0,
+    mode: 'normal',
+    hue: rand(config.hue[0], config.hue[1]),
+    saturation: rand(config.saturation[0], config.saturation[1]),
+    brightness: rand(config.brightness[0], config.brightness[1]),
+    transition_period: config.nextState.transitionPeriod
+  });
+};
 
-    const client = new Client();
-    const bulb = await client.getDevice({ host: config.ip });
-
-    await nextLightState(config, bulb);
-    setInterval(() => nextLightState(config, bulb), config.nextState.interval);
-
-  } catch (ex) {
-    console.error(ex);
-  }
+(function main() {
+  const config = require('./config.json');
+  new Client().getDevice({ host: config.ip })
+    .then(function (bulb) {
+      nextLightState(config, bulb);
+      setInterval(
+        function () { nextLightState(config, bulb); },
+        config.nextState.interval
+      );
+    })
+    .catch(console.error);
 })();
