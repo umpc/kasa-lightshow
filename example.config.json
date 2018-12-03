@@ -3,6 +3,7 @@
   "hue": [0, 360],
   "saturation": [100, 100],
   "brightness": [100, 100],
+  "minHueDifference": 0,
   "nextState": {
     "transitionPeriod": 15,
     "interval": 15
