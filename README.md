@@ -13,3 +13,19 @@ From the root of the project directory:
 ## Configuration Notes
 
 Duration values are in seconds.
+
+## Example Configuration
+
+```json
+{
+  "ip": "10.0.0.8",
+  "hue": [[0, 248], [315, 360]],
+  "saturation": [[25, 50], [100, 100]],
+  "brightness": [[50, 75], [100, 100]],
+  "minHueDifference": 22.5,
+  "nextState": {
+    "transitionPeriod": 10,
+    "interval": 11
+  }
+}
+```
