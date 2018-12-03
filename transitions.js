@@ -1,4 +1,4 @@
-const { randNumFromRanges } = require('./utils');
+const { randNumFromRanges } = require('./rand-num');
 
 const isHueSimilar = function (config, lightState, options) {
   return Math.abs(lightState.hue - options.hue) < config.minHueDifference &&
