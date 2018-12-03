@@ -1,0 +1,10 @@
+{
+  "ip": "10.0.0.2",
+  "hue": [0, 360],
+  "saturation": [100, 100],
+  "brightness": [100, 100],
+  "nextState": {
+    "transitionPeriod": 15,
+    "interval": 15
+  }
+}
