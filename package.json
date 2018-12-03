@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon --quiet --watch ./config.json index.js"
   },
   "author": "Justin Lowery",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^1.18.7",
     "tplink-smarthome-api": "^0.23.0"
   }
 }
