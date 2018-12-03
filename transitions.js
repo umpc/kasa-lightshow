@@ -20,7 +20,7 @@ const nextLightState = function (config, bulb, lightState) {
       return nextLightState(config, bulb, lightState);
     }
   }
-  bulb.lighting.setLightState(options);
+  bulb.lighting.setLightState(options).catch(console.error);
   return options;
 };
 
