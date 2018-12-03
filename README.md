@@ -9,3 +9,7 @@ From the root of the project directory:
 2. Move or copy `config.example.json` to `config.json`
 3. Change `ip` in `config.json` to the IP address of your LB130
 4. Run `npm start`
+
+## Configuration Notes
+
+Duration values are in seconds.
