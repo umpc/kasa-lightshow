@@ -1,5 +1,5 @@
 const { Client } = require('tplink-smarthome-api');
-const { startTransitions } = require('./transitions');
+const { startTransitions } = require('./transitions.js');
 
 (function main() {
   const config = require('./config.json');
