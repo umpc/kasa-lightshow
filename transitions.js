@@ -1,4 +1,4 @@
-const { randNum } = require('./utils');
+const { randNumFromRanges } = require('./utils');
 
 const isHueSimilar = function (config, lightState, options) {
   return Math.abs(lightState.hue - options.hue) < config.minHueDifference &&
@@ -10,9 +10,9 @@ const nextLightState = function (config, bulb, lightState) {
     on_off: 1,
     color_temp: 0,
     mode: 'normal',
-    hue: randNum(config.hue[0], config.hue[1]),
-    saturation: randNum(config.saturation[0], config.saturation[1]),
-    brightness: randNum(config.brightness[0], config.brightness[1]),
+    hue: randNumFromRanges(config.hue),
+    saturation: randNumFromRanges(config.saturation),
+    brightness: randNumFromRanges(config.brightness),
     transition_period: config.nextState.transitionPeriod * 1000
   };
   if (lightState) {
